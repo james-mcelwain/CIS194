@@ -29,13 +29,18 @@ toRevDigits x
 
 -- Double every second number in a list starting on the left.
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther = undefined
+doubleEveryOther (x : y : xs) = x : y * 2 : doubleEveryOther xs
+doubleEveryOther x = x
 
 -- Exercise 4 -----------------------------------------
 
 -- Calculate the sum of all the digits in every Integer.
 sumDigits :: [Integer] -> Integer
-sumDigits = undefined
+sumDigits []            = 0
+sumDigits (x : xs)      = x + sumDigits xs
+-- OR
+-- sumDigits xs            = foldr (+) 0  xs
+-- sumDigits xs            = sum xs
 
 
 -- Exercise 5 -----------------------------------------
