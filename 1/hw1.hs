@@ -24,7 +24,6 @@ toRevDigits x
   | x <= 0    = []
   | otherwise = lastDigit x : toDigits (dropLastDigit x)
 
-
 -- Exercise 3 -----------------------------------------
 
 -- Double every second number in a list starting on the left.
@@ -38,16 +37,20 @@ doubleEveryOther x = x
 sumDigits :: [Integer] -> Integer
 sumDigits []            = 0
 sumDigits (x : xs)      = x + sumDigits xs
--- OR
--- sumDigits xs            = foldr (+) 0  xs
--- sumDigits xs            = sum xs
+{- OR
+sumDigits xs            = foldr (+) 0  xs
+sumDigis  xs            = sum xs
+-}
+
 
 
 -- Exercise 5 -----------------------------------------
 
 -- Validate a credit card number using the above functions.
 luhn :: Integer -> Bool
-luhn = undefined
+luhn x =
+  let isValid = lastDigit . sumDigits . doubleEveryOther . toRevDigits
+  in isValid x == 0
 
 -- Exercise 6 -----------------------------------------
 
